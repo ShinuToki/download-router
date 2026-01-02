@@ -1,0 +1,150 @@
+{
+  "extensionName": {
+    "message": "Download Router",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Automatically route downloads to categorized folders based on file extensions",
+    "description": "Description of the extension"
+  },
+  "categoryManager": {
+    "message": "Category Manager",
+    "description": "Title of the popup"
+  },
+  "addCategory": {
+    "message": "Add Category",
+    "description": "Button to add a new category"
+  },
+  "categoryName": {
+    "message": "Category Name",
+    "description": "Label for category name input"
+  },
+  "folderPath": {
+    "message": "Folder Path",
+    "description": "Label for folder path input"
+  },
+  "extensions": {
+    "message": "Extensions",
+    "description": "Label for extensions input"
+  },
+  "extensionsPlaceholder": {
+    "message": ".mp4, .mkv, .avi",
+    "description": "Placeholder for extensions input"
+  },
+  "edit": {
+    "message": "Edit",
+    "description": "Edit button text"
+  },
+  "delete": {
+    "message": "Delete",
+    "description": "Delete button text"
+  },
+  "moveUp": {
+    "message": "Move up",
+    "description": "Move up button tooltip"
+  },
+  "moveDown": {
+    "message": "Move down",
+    "description": "Move down button tooltip"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Save button text"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Cancel button text"
+  },
+  "selectCategory": {
+    "message": "Select Category",
+    "description": "Title of the category selector dialog"
+  },
+  "downloadFile": {
+    "message": "Download file:",
+    "description": "Label showing the file being downloaded"
+  },
+  "downloadWithoutCategory": {
+    "message": "Download without category",
+    "description": "Option to download to default folder"
+  },
+  "categoryExists": {
+    "message": "A category with this name already exists",
+    "description": "Error when duplicate category name"
+  },
+  "extensionExists": {
+    "message": "These extensions are already used in another category:",
+    "description": "Error when duplicate file extension"
+  },
+  "confirmDelete": {
+    "message": "Are you sure you want to delete this category?",
+    "description": "Confirmation message for category deletion"
+  },
+  "downloadPathInfo": {
+    "message": "All folder paths are relative to your browser's default download location.",
+    "description": "Info text explaining download paths"
+  },
+  "categories": {
+    "message": "Categories",
+    "description": "Header for the categories list"
+  },
+  "extensionsHint": {
+    "message": "Comma-separated, optional",
+    "description": "Hint text for extensions input"
+  },
+  "noCategories": {
+    "message": "No categories yet. Add one above!",
+    "description": "Message shown when there are no categories"
+  },
+  "filterPlaceholder": {
+    "message": "Filter categories...",
+    "description": "Placeholder for filter input"
+  },
+  "noFilterResults": {
+    "message": "No categories match your filter.",
+    "description": "Message when filter has no results"
+  },
+  "exportConfig": {
+    "message": "Export",
+    "description": "Export configuration button"
+  },
+  "importConfig": {
+    "message": "Import",
+    "description": "Import configuration button"
+  },
+  "exportSuccess": {
+    "message": "Configuration string generated",
+    "description": "Toast message after successful export"
+  },
+  "exportString": {
+    "message": "Copy this configuration string:",
+    "description": "Prompt message when exporting"
+  },
+  "importSuccess": {
+    "message": "Configuration imported",
+    "description": "Toast message after successful import"
+  },
+  "importError": {
+    "message": "Failed to import configuration",
+    "description": "Toast message when import fails"
+  },
+  "importConfirm": {
+    "message": "This will overwrite your current configuration. Continue?",
+    "description": "Confirmation message before importing"
+  },
+  "importPrompt": {
+    "message": "Paste your configuration string here:",
+    "description": "Prompt message for importing configuration"
+  },
+  "categoryAdded": {
+    "message": "Category added",
+    "description": "Toast message when category is added"
+  },
+  "categorySaved": {
+    "message": "Category saved",
+    "description": "Toast message when category is saved"
+  },
+  "categoryReordered": {
+    "message": "Categories reordered",
+    "description": "Toast message after reordering"
+  }
+}

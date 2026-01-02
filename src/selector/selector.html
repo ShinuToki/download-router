@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="selectCategory">Select Category</title>
+    <link rel="stylesheet" href="selector.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 data-i18n="selectCategory">Select Category</h1>
+    </header>
+
+    <main>
+      <section class="file-info">
+        <span class="label" data-i18n="downloadFile">Download file:</span>
+        <span id="filename" class="filename"></span>
+      </section>
+
+      <section class="categories-section">
+        <ul id="category-list"></ul>
+      </section>
+
+      <section class="actions">
+        <button
+          id="download-default"
+          class="btn-secondary"
+          data-i18n="downloadWithoutCategory"
+        >
+          Download without category
+        </button>
+        <button id="cancel" class="btn-danger" data-i18n="cancel">
+          Cancel
+        </button>
+      </section>
+    </main>
+
+    <script src="selector.js"></script>
+  </body>
+</html>

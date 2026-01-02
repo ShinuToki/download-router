@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="categoryManager">Category Manager</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 data-i18n="categoryManager">Category Manager</h1>
+    </header>
+
+    <main>
+      <!-- Info Section -->
+      <section class="info-section">
+        <div class="info-box">
+          <span class="info-icon">ℹ️</span>
+          <p data-i18n="downloadPathInfo">
+            All folder paths are relative to your browser's default download
+            location.
+          </p>
+        </div>
+      </section>
+
+      <!-- Add Category Form -->
+      <section class="add-category-section">
+        <h2 data-i18n="addCategory">Add Category</h2>
+        <form id="category-form">
+          <div class="form-group">
+            <label for="category-name" data-i18n="categoryName"
+              >Category Name</label
+            >
+            <input type="text" id="category-name" required />
+          </div>
+          <div class="form-group">
+            <label for="category-folder" data-i18n="folderPath"
+              >Folder Path</label
+            >
+            <input
+              type="text"
+              id="category-folder"
+              placeholder="Videos"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="category-extensions" data-i18n="extensions"
+              >Extensions</label
+            >
+            <input
+              type="text"
+              id="category-extensions"
+              data-i18n-placeholder="extensionsPlaceholder"
+              placeholder=".mp4, .mkv, .avi"
+            />
+            <small class="hint" data-i18n="extensionsHint"
+              >Comma-separated, optional</small
+            >
+          </div>
+          <button type="submit" class="btn-primary" data-i18n="addCategory">
+            Add Category
+          </button>
+        </form>
+      </section>
+
+      <!-- Categories List -->
+      <section class="categories-section">
+        <h2 data-i18n="categories">Categories</h2>
+        <input
+          type="text"
+          id="category-filter"
+          class="filter-input"
+          data-i18n-placeholder="filterPlaceholder"
+          placeholder="Filter categories..."
+        />
+        <ul id="category-list"></ul>
+        <p
+          id="empty-message"
+          class="empty-message"
+          hidden
+          data-i18n="noCategories"
+        >
+          No categories yet. Add one above!
+        </p>
+      </section>
+
+      <!-- Import/Export Section -->
+      <section class="import-export-section">
+        <button id="export-btn" class="btn-secondary btn-block">
+          <svg viewBox="0 0 24 24" width="14" height="14">
+            <path
+              fill="currentColor"
+              d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+            />
+          </svg>
+          <span data-i18n="exportConfig">Export Configuration</span>
+        </button>
+        <button id="import-btn" class="btn-secondary btn-block">
+          <svg viewBox="0 0 24 24" width="14" height="14">
+            <path
+              fill="currentColor"
+              d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"
+            />
+          </svg>
+          <span data-i18n="importConfig">Import Configuration</span>
+        </button>
+      </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

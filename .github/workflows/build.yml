@@ -1,0 +1,40 @@
+name: Build XPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Get version from manifest
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' src/manifest.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create XPI
+        working-directory: src
+        run: zip -r ../download-router-${{ steps.version.outputs.version }}.xpi .
+
+      - name: Upload XPI artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: download-router-xpi
+          path: download-router-*.xpi
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: download-router-*.xpi
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

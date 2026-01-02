@@ -1,0 +1,150 @@
+{
+  "extensionName": {
+    "message": "Download Router",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Acheminez automatiquement les téléchargements vers des dossiers classés selon les extensions de fichiers",
+    "description": "Description of the extension"
+  },
+  "categoryManager": {
+    "message": "Gestionnaire de catégories",
+    "description": "Title of the popup"
+  },
+  "addCategory": {
+    "message": "Ajouter une catégorie",
+    "description": "Button to add a new category"
+  },
+  "categoryName": {
+    "message": "Nom de la catégorie",
+    "description": "Label for category name input"
+  },
+  "folderPath": {
+    "message": "Chemin du dossier",
+    "description": "Label for folder path input"
+  },
+  "extensions": {
+    "message": "Extensions",
+    "description": "Label for extensions input"
+  },
+  "extensionsPlaceholder": {
+    "message": ".mp4, .mkv, .avi",
+    "description": "Placeholder for extensions input"
+  },
+  "edit": {
+    "message": "Modifier",
+    "description": "Edit button text"
+  },
+  "delete": {
+    "message": "Supprimer",
+    "description": "Delete button text"
+  },
+  "moveUp": {
+    "message": "Déplacer vers le haut",
+    "description": "Move up button tooltip"
+  },
+  "moveDown": {
+    "message": "Déplacer vers le bas",
+    "description": "Move down button tooltip"
+  },
+  "save": {
+    "message": "Enregistrer",
+    "description": "Save button text"
+  },
+  "cancel": {
+    "message": "Annuler",
+    "description": "Cancel button text"
+  },
+  "selectCategory": {
+    "message": "Sélectionner une catégorie",
+    "description": "Title of the category selector dialog"
+  },
+  "downloadFile": {
+    "message": "Télécharger le fichier :",
+    "description": "Label showing the file being downloaded"
+  },
+  "downloadWithoutCategory": {
+    "message": "Télécharger sans catégorie",
+    "description": "Option to download to default folder"
+  },
+  "categoryExists": {
+    "message": "Une catégorie portant ce nom existe déjà",
+    "description": "Error when duplicate category name"
+  },
+  "extensionExists": {
+    "message": "Ces extensions sont déjà utilisées dans une autre catégorie :",
+    "description": "Error when duplicate file extension"
+  },
+  "confirmDelete": {
+    "message": "Voulez-vous vraiment supprimer cette catégorie ?",
+    "description": "Confirmation message for category deletion"
+  },
+  "downloadPathInfo": {
+    "message": "Tous les chemins de dossier sont relatifs à l'emplacement de téléchargement par défaut de votre navigateur.",
+    "description": "Info text explaining download paths"
+  },
+  "categories": {
+    "message": "Catégories",
+    "description": "Header for the categories list"
+  },
+  "extensionsHint": {
+    "message": "Séparées par des virgules, facultatif",
+    "description": "Hint text for extensions input"
+  },
+  "noCategories": {
+    "message": "Aucune catégorie pour l'instant. Ajoutez-en une ci-dessus !",
+    "description": "Message shown when there are no categories"
+  },
+  "filterPlaceholder": {
+    "message": "Filtrer les catégories...",
+    "description": "Placeholder for filter input"
+  },
+  "noFilterResults": {
+    "message": "Aucune catégorie ne correspond à votre filtre.",
+    "description": "Message when filter has no results"
+  },
+  "exportConfig": {
+    "message": "Exporter",
+    "description": "Export configuration button"
+  },
+  "importConfig": {
+    "message": "Importer",
+    "description": "Import configuration button"
+  },
+  "exportSuccess": {
+    "message": "Chaîne de configuration générée",
+    "description": "Toast message after successful export"
+  },
+  "exportString": {
+    "message": "Copiez cette chaîne de configuration :",
+    "description": "Prompt message when exporting"
+  },
+  "importSuccess": {
+    "message": "Configuration importée",
+    "description": "Toast message after successful import"
+  },
+  "importError": {
+    "message": "Échec de l'importation de la configuration",
+    "description": "Toast message when import fails"
+  },
+  "importConfirm": {
+    "message": "Ceci écrasera votre configuration actuelle. Continuer ?",
+    "description": "Confirmation message before importing"
+  },
+  "importPrompt": {
+    "message": "Collez votre chaîne de configuration ici :",
+    "description": "Prompt message for importing configuration"
+  },
+  "categoryAdded": {
+    "message": "Catégorie ajoutée",
+    "description": "Toast message when category is added"
+  },
+  "categorySaved": {
+    "message": "Catégorie enregistrée",
+    "description": "Toast message when category is saved"
+  },
+  "categoryReordered": {
+    "message": "Catégories réorganisées",
+    "description": "Toast message after reordering"
+  }
+}

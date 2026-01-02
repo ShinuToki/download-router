@@ -1,0 +1,150 @@
+{
+  "extensionName": {
+    "message": "下载路由",
+    "description": "Name of the extension"
+  },
+  "extensionDescription": {
+    "message": "根据文件扩展名自动将下载内容分发到相应的分类文件夹中",
+    "description": "Description of the extension"
+  },
+  "categoryManager": {
+    "message": "分类管理器",
+    "description": "Title of the popup"
+  },
+  "addCategory": {
+    "message": "添加分类",
+    "description": "Button to add a new category"
+  },
+  "categoryName": {
+    "message": "分类名称",
+    "description": "Label for category name input"
+  },
+  "folderPath": {
+    "message": "文件夹路径",
+    "description": "Label for folder path input"
+  },
+  "extensions": {
+    "message": "扩展名",
+    "description": "Label for extensions input"
+  },
+  "extensionsPlaceholder": {
+    "message": ".mp4, .mkv, .avi",
+    "description": "Placeholder for extensions input"
+  },
+  "edit": {
+    "message": "编辑",
+    "description": "Edit button text"
+  },
+  "delete": {
+    "message": "删除",
+    "description": "Delete button text"
+  },
+  "moveUp": {
+    "message": "上移",
+    "description": "Move up button tooltip"
+  },
+  "moveDown": {
+    "message": "下移",
+    "description": "Move down button tooltip"
+  },
+  "save": {
+    "message": "保存",
+    "description": "Save button text"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "Cancel button text"
+  },
+  "selectCategory": {
+    "message": "选择分类",
+    "description": "Title of the category selector dialog"
+  },
+  "downloadFile": {
+    "message": "正在下载文件：",
+    "description": "Label showing the file being downloaded"
+  },
+  "downloadWithoutCategory": {
+    "message": "不使用分类直接下载",
+    "description": "Option to download to default folder"
+  },
+  "categoryExists": {
+    "message": "该分类名称已存在",
+    "description": "Error when duplicate category name"
+  },
+  "extensionExists": {
+    "message": "这些扩展名已被其他分类使用：",
+    "description": "Error when duplicate file extension"
+  },
+  "confirmDelete": {
+    "message": "确定要删除此分类吗？",
+    "description": "Confirmation message for category deletion"
+  },
+  "downloadPathInfo": {
+    "message": "所有文件夹路径均相对于浏览器的默认下载位置。",
+    "description": "Info text explaining download paths"
+  },
+  "categories": {
+    "message": "分类列表",
+    "description": "Header for the categories list"
+  },
+  "extensionsHint": {
+    "message": "用逗号分隔，可选",
+    "description": "Hint text for extensions input"
+  },
+  "noCategories": {
+    "message": "暂无分类。请在上方添加！",
+    "description": "Message shown when there are no categories"
+  },
+  "filterPlaceholder": {
+    "message": "筛选分类...",
+    "description": "Placeholder for filter input"
+  },
+  "noFilterResults": {
+    "message": "没有匹配的分类。",
+    "description": "Message when filter has no results"
+  },
+  "exportConfig": {
+    "message": "导出",
+    "description": "Export configuration button"
+  },
+  "importConfig": {
+    "message": "导入",
+    "description": "Import configuration button"
+  },
+  "exportSuccess": {
+    "message": "配置字符串已生成",
+    "description": "Toast message after successful export"
+  },
+  "exportString": {
+    "message": "复制此配置字符串：",
+    "description": "Prompt message when exporting"
+  },
+  "importSuccess": {
+    "message": "配置已导入",
+    "description": "Toast message after successful import"
+  },
+  "importError": {
+    "message": "导入配置失败",
+    "description": "Toast message when import fails"
+  },
+  "importConfirm": {
+    "message": "这将覆盖当前的配置。是否继续？",
+    "description": "Confirmation message before importing"
+  },
+  "importPrompt": {
+    "message": "在此处粘贴配置字符串：",
+    "description": "Prompt message for importing configuration"
+  },
+  "categoryAdded": {
+    "message": "分类已添加",
+    "description": "Toast message when category is added"
+  },
+  "categorySaved": {
+    "message": "分类已保存",
+    "description": "Toast message when category is saved"
+  },
+  "categoryReordered": {
+    "message": "分类排序已更新",
+    "description": "Toast message after reordering"
+  }
+}

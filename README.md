@@ -33,7 +33,7 @@ All folder paths are relative to your browser's default download location. For e
 
 ### From Firefox Add-ons (Recommended)
 
-1. Visit the [Firefox Add-ons page](#) _(coming soon)_
+1. Visit the [Firefox Add-ons page](https://addons.mozilla.org/es-ES/firefox/addon/smart-download-router/)
 2. Click "Add to Firefox"
 
 ### From GitHub Releases

@@ -55,18 +55,7 @@
     "message": "Cancel",
     "description": "Cancel button text"
   },
-  "selectCategory": {
-    "message": "Select Category",
-    "description": "Title of the category selector dialog"
-  },
-  "downloadFile": {
-    "message": "Download file:",
-    "description": "Label showing the file being downloaded"
-  },
-  "downloadWithoutCategory": {
-    "message": "Download without category",
-    "description": "Option to download to default folder"
-  },
+
   "categoryExists": {
     "message": "A category with this name already exists",
     "description": "Error when duplicate category name"
@@ -146,5 +135,19 @@
   "categoryReordered": {
     "message": "Categories reordered",
     "description": "Toast message after reordering"
+  },
+  "contextMenuDownloadTo": {
+    "message": "Download to...",
+    "description": "Title of the context menu parent item"
+  },
+  "contextMenuDefault": {
+    "message": "Default ($FOLDER$)",
+    "description": "Context menu item for default folder",
+    "placeholders": {
+      "folder": {
+        "content": "$1",
+        "example": "Downloads"
+      }
+    }
   }
 }

@@ -55,18 +55,7 @@
     "message": "取消",
     "description": "Cancel button text"
   },
-  "selectCategory": {
-    "message": "选择分类",
-    "description": "Title of the category selector dialog"
-  },
-  "downloadFile": {
-    "message": "正在下载文件：",
-    "description": "Label showing the file being downloaded"
-  },
-  "downloadWithoutCategory": {
-    "message": "不使用分类直接下载",
-    "description": "Option to download to default folder"
-  },
+
   "categoryExists": {
     "message": "该分类名称已存在",
     "description": "Error when duplicate category name"
@@ -146,5 +135,19 @@
   "categoryReordered": {
     "message": "分类排序已更新",
     "description": "Toast message after reordering"
+  },
+  "contextMenuDownloadTo": {
+    "message": "下载到...",
+    "description": "Title of the context menu parent item"
+  },
+  "contextMenuDefault": {
+    "message": "默认 ($FOLDER$)",
+    "description": "Context menu item for default folder",
+    "placeholders": {
+      "folder": {
+        "content": "$1",
+        "example": "Downloads"
+      }
+    }
   }
 }

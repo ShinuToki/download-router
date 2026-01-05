@@ -176,36 +176,6 @@ async function downloadToFolder(url, folder, filename = null) {
   }
 }
 
-/**
- * Open the category selector popup for a download
- * @param {string} url - URL to download
- * @param {string} filename - Filename of the download
- */
-function openCategorySelector(url, filename) {
-  const downloadId = Date.now().toString()
-
-  // Store pending download info
-  pendingDownloads.set(downloadId, {
-    url: url,
-    filename: filename,
-    timestamp: Date.now(),
-  })
-
-  // Open selector page
-  const selectorUrl = browser.runtime.getURL(
-    `selector/selector.html?id=${downloadId}&filename=${encodeURIComponent(
-      filename
-    )}`
-  )
-
-  browser.windows.create({
-    url: selectorUrl,
-    type: 'popup',
-    width: 400,
-    height: 500,
-  })
-}
-
 // ============================================================================
 // Context Menu
 // ============================================================================
@@ -222,19 +192,19 @@ async function createContextMenus() {
   // Create parent menu
   browser.contextMenus.create({
     id: 'download-router-parent',
-    title: 'Download to...',
+    title: browser.i18n.getMessage('contextMenuDownloadTo'),
     contexts: ['link', 'image', 'video', 'audio'],
   })
 
-  // Add category submenus
-  for (const category of settings.categories) {
-    browser.contextMenus.create({
-      id: `download-router-${category.id}`,
-      parentId: 'download-router-parent',
-      title: category.name,
-      contexts: ['link', 'image', 'video', 'audio'],
-    })
-  }
+  browser.contextMenus.create({
+    id: 'download-router-default',
+    parentId: 'download-router-parent',
+    title: browser.i18n.getMessage(
+      'contextMenuDefault',
+      settings.defaultFolder
+    ),
+    contexts: ['link', 'image', 'video', 'audio'],
+  })
 
   // Add separator and default option
   if (settings.categories.length > 0) {
@@ -246,19 +216,15 @@ async function createContextMenus() {
     })
   }
 
-  browser.contextMenus.create({
-    id: 'download-router-default',
-    parentId: 'download-router-parent',
-    title: `Default (${settings.defaultFolder})`,
-    contexts: ['link', 'image', 'video', 'audio'],
-  })
-
-  browser.contextMenus.create({
-    id: 'download-router-choose',
-    parentId: 'download-router-parent',
-    title: 'Choose category...',
-    contexts: ['link', 'image', 'video', 'audio'],
-  })
+  // Add category submenus
+  for (const category of settings.categories) {
+    browser.contextMenus.create({
+      id: `download-router-${category.id}`,
+      parentId: 'download-router-parent',
+      title: category.name,
+      contexts: ['link', 'image', 'video', 'audio'],
+    })
+  }
 }
 
 /**
@@ -274,13 +240,10 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
     return
   }
 
-  const filename = getCleanFilename(url)
   const settings = await loadSettings()
 
   if (info.menuItemId === 'download-router-default') {
     await downloadToFolder(url, settings.defaultFolder)
-  } else if (info.menuItemId === 'download-router-choose') {
-    openCategorySelector(url, filename)
   } else {
     const categoryId = info.menuItemId.replace('download-router-', '')
     const category = settings.categories.find((c) => c.id === categoryId)
@@ -292,7 +255,7 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 })
 
 // ============================================================================
-// Message Handling (Communication with popup and selector)
+// Message Handling (Communication with popup)
 // ============================================================================
 
 browser.runtime.onMessage.addListener(async (message, sender) => {

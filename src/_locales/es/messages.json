@@ -55,18 +55,7 @@
     "message": "Cancelar",
     "description": "Texto del botón cancelar"
   },
-  "selectCategory": {
-    "message": "Seleccionar categoría",
-    "description": "Título del diálogo selector de categoría"
-  },
-  "downloadFile": {
-    "message": "Descargar archivo:",
-    "description": "Etiqueta mostrando el archivo a descargar"
-  },
-  "downloadWithoutCategory": {
-    "message": "Descargar sin categoría",
-    "description": "Opción para descargar a carpeta por defecto"
-  },
+
   "categoryExists": {
     "message": "Ya existe una categoría con este nombre",
     "description": "Error cuando el nombre está duplicado"
@@ -146,5 +135,19 @@
   "categoryReordered": {
     "message": "Categorías reordenadas",
     "description": "Mensaje toast tras reordenar"
+  },
+  "contextMenuDownloadTo": {
+    "message": "Descargar en...",
+    "description": "Título del menú contextual principal"
+  },
+  "contextMenuDefault": {
+    "message": "Por defecto ($FOLDER$)",
+    "description": "Opción del menú contextual para carpeta por defecto",
+    "placeholders": {
+      "folder": {
+        "content": "$1",
+        "example": "Downloads"
+      }
+    }
   }
 }

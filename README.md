@@ -9,7 +9,6 @@ A Firefox extension that automatically routes your downloads to categorized fold
 
 <!-- Add your screenshots here -->
 <!-- ![Popup Interface](screenshots/popup.png) -->
-<!-- ![Category Selector](screenshots/selector.png) -->
 
 ## Features
 
@@ -18,7 +17,7 @@ A Firefox extension that automatically routes your downloads to categorized fold
 - **Easy category management** - Add, edit, delete, and reorder categories from the popup
 - **Filter categories** - Quickly find categories when you have many
 - **Export/Import** - Backup and restore your configuration with a simple string
-- **Multilingual** - Available in English, Spanish, French, Italian, and Chinese
+- **Multilingual** - Available in English, Spanish, French, Italian, Chinese and Catalan
 - **Dark mode** - Automatically adapts to your system theme
 
 ## How It Works

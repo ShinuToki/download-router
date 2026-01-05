@@ -4,27 +4,27 @@
     "description": "Name of the extension"
   },
   "extensionDescription": {
-    "message": "Reindirizza automaticamente i download in cartelle categorizzate in base alle estensioni dei file",
+    "message": "Encamina automàticament les baixades a carpetes categoritzades segons les extensions de fitxer",
     "description": "Description of the extension"
   },
   "categoryManager": {
-    "message": "Gestore Categorie",
+    "message": "Gestor de categories",
     "description": "Title of the popup"
   },
   "addCategory": {
-    "message": "Aggiungi Categoria",
+    "message": "Afegeix una categoria",
     "description": "Button to add a new category"
   },
   "categoryName": {
-    "message": "Nome Categoria",
+    "message": "Nom de la categoria",
     "description": "Label for category name input"
   },
   "folderPath": {
-    "message": "Percorso Cartella",
+    "message": "Ruta de la carpeta",
     "description": "Label for folder path input"
   },
   "extensions": {
-    "message": "Estensioni",
+    "message": "Extensions",
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
@@ -32,68 +32,67 @@
     "description": "Placeholder for extensions input"
   },
   "edit": {
-    "message": "Modifica",
+    "message": "Edita",
     "description": "Edit button text"
   },
   "delete": {
-    "message": "Elimina",
+    "message": "Suprimeix",
     "description": "Delete button text"
   },
   "moveUp": {
-    "message": "Sposta su",
+    "message": "Mou amunt",
     "description": "Move up button tooltip"
   },
   "moveDown": {
-    "message": "Sposta giù",
+    "message": "Mou avall",
     "description": "Move down button tooltip"
   },
   "save": {
-    "message": "Salva",
+    "message": "Desa",
     "description": "Save button text"
   },
   "cancel": {
-    "message": "Annulla",
+    "message": "Cancel·la",
     "description": "Cancel button text"
   },
-
   "categoryExists": {
-    "message": "Esiste già una categoria con questo nome",
+    "message": "Ja existeix una categoria amb aquest nom",
     "description": "Error when duplicate category name"
   },
   "extensionExists": {
-    "message": "Queste estensioni sono già utilizzate in un'altra categoria:",
+    "message": "Aquestes extensions ja s'utilitzen en una altra categoria:",
     "description": "Error when duplicate file extension"
   },
   "confirmDelete": {
-    "message": "Sei sicuro di voler eliminare questa categoria?",
+    "message": "Segur que voleu suprimir aquesta categoria?",
     "description": "Confirmation message for category deletion"
   },
   "downloadPathInfo": {
-    "message": "Tutti i percorsi delle cartelle sono relativi alla posizione di download predefinita del browser.",
+    "message": "Totes les rutes de carpeta són relatives a la ubicació de baixada per defecte del navegador.",
     "description": "Info text explaining download paths"
   },
   "categories": {
-    "message": "Categorie",
+    "message": "Categories",
     "description": "Header for the categories list"
   },
   "extensionsHint": {
-    "message": "Separate da virgola, opzionale",
+    "message": "Separades per comes, opcional",
     "description": "Hint text for extensions input"
   },
   "noCategories": {
-    "message": "Ancora nessuna categoria. Aggiungine una qui sopra!",
+    "message": "Encara no hi ha categories. Afegiu-ne una a dalt!",
     "description": "Message shown when there are no categories"
   },
   "filterPlaceholder": {
-    "message": "Filtra categorie...",
+    "message": "Filtra les categories...",
     "description": "Placeholder for filter input"
   },
   "noFilterResults": {
-    "message": "Nessuna categoria corrisponde al filtro.",
+    "message": "Cap categoria coincideix amb el filtre.",
     "description": "Message when filter has no results"
   },
   "exportConfig": {
-    "message": "Esporta",
+    "message": "Exporta",
     "description": "Export configuration button"
   },
   "importConfig": {
@@ -101,47 +100,47 @@
     "description": "Import configuration button"
   },
   "exportSuccess": {
-    "message": "Stringa di configurazione generata",
+    "message": "S'ha generat la cadena de configuració",
     "description": "Toast message after successful export"
   },
   "exportString": {
-    "message": "Copia questa stringa di configurazione:",
+    "message": "Copieu aquesta cadena de configuració:",
     "description": "Prompt message when exporting"
   },
   "importSuccess": {
-    "message": "Configurazione importata",
+    "message": "Configuració importada",
     "description": "Toast message after successful import"
   },
   "importError": {
-    "message": "Impossibile importare la configurazione",
+    "message": "No s'ha pogut importar la configuració",
     "description": "Toast message when import fails"
   },
   "importConfirm": {
-    "message": "Questo sovrascriverà la tua configurazione attuale. Continuare?",
+    "message": "Això sobreescriurà la configuració actual. Voleu continuar?",
     "description": "Confirmation message before importing"
   },
   "importPrompt": {
-    "message": "Incolla qui la tua stringa di configurazione:",
+    "message": "Enganxeu aquí la cadena de configuració:",
     "description": "Prompt message for importing configuration"
   },
   "categoryAdded": {
-    "message": "Categoria aggiunta",
+    "message": "Categoria afegida",
     "description": "Toast message when category is added"
   },
   "categorySaved": {
-    "message": "Categoria salvata",
+    "message": "Categoria desada",
     "description": "Toast message when category is saved"
   },
   "categoryReordered": {
-    "message": "Categorie riordinate",
+    "message": "Categories reordenades",
     "description": "Toast message after reordering"
   },
   "contextMenuDownloadTo": {
-    "message": "Scarica in...",
+    "message": "Baixa a...",
     "description": "Title of the context menu parent item"
   },
   "contextMenuDefault": {
-    "message": "Predefinito ($FOLDER$)",
+    "message": "Per defecte ($FOLDER$)",
     "description": "Context menu item for default folder",
     "placeholders": {
       "folder": {

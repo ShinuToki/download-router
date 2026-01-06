@@ -28,7 +28,7 @@
     "description": "Etiqueta para las extensiones"
   },
   "extensionsPlaceholder": {
-    "message": ".mp4, .mkv, .avi",
+    "message": "ej: .pdf, .jpg, .doc",
     "description": "Placeholder para las extensiones"
   },
   "edit": {
@@ -80,8 +80,12 @@
     "message": "Separadas por comas, opcional",
     "description": "Texto de ayuda para el campo de extensiones"
   },
+  "extensionsOptional": {
+    "message": "Extensiones (opcional)",
+    "description": "Etiqueta para extensiones con indicador opcional"
+  },
   "noCategories": {
-    "message": "Aún no hay categorías. ¡Añade una arriba!",
+    "message": "Aún no hay categorías. ¡Añade una abajo!",
     "description": "Mensaje cuando no hay categorías"
   },
   "filterPlaceholder": {

@@ -28,7 +28,7 @@
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
-    "message": ".mp4, .mkv, .avi",
+    "message": "例: .pdf, .jpg, .doc",
     "description": "Placeholder for extensions input"
   },
   "edit": {
@@ -80,8 +80,12 @@
     "message": "用逗号分隔，可选",
     "description": "Hint text for extensions input"
   },
+  "extensionsOptional": {
+    "message": "扩展名（可选）",
+    "description": "Label for extensions input with optional indicator"
+  },
   "noCategories": {
-    "message": "暂无分类。请在上方添加！",
+    "message": "暂无分类。请在下方添加！",
     "description": "Message shown when there are no categories"
   },
   "filterPlaceholder": {

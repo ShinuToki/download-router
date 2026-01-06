@@ -28,7 +28,7 @@
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
-    "message": ".mp4, .mkv, .avi",
+    "message": "es: .pdf, .jpg, .doc",
     "description": "Placeholder for extensions input"
   },
   "edit": {
@@ -80,8 +80,12 @@
     "message": "Separate da virgola, opzionale",
     "description": "Hint text for extensions input"
   },
+  "extensionsOptional": {
+    "message": "Estensioni (opzionale)",
+    "description": "Label for extensions input with optional indicator"
+  },
   "noCategories": {
-    "message": "Ancora nessuna categoria. Aggiungine una qui sopra!",
+    "message": "Ancora nessuna categoria. Aggiungine una qui sotto!",
     "description": "Message shown when there are no categories"
   },
   "filterPlaceholder": {

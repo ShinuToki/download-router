@@ -28,6 +28,15 @@ function applyI18n() {
       element.placeholder = message
     }
   })
+
+  // Translate title attributes
+  document.querySelectorAll('[data-i18n-title]').forEach((element) => {
+    const messageKey = element.getAttribute('data-i18n-title')
+    const message = browser.i18n.getMessage(messageKey)
+    if (message) {
+      element.title = message
+    }
+  })
 }
 
 // ============================================================================
@@ -45,6 +54,31 @@ const elements = {
   exportBtn: document.getElementById('export-btn'),
   importBtn: document.getElementById('import-btn'),
   toastContainer: document.getElementById('toast-container'),
+  toggleFormBtn: document.getElementById('toggle-form-btn'),
+  cancelFormBtn: document.getElementById('cancel-form-btn'),
+  infoBtn: document.getElementById('info-btn'),
+}
+
+// ============================================================================
+// Form Toggle
+// ============================================================================
+
+/**
+ * Show the add category form
+ */
+function showAddForm() {
+  elements.categoryForm.hidden = false
+  elements.toggleFormBtn.hidden = true
+  elements.categoryName.focus()
+}
+
+/**
+ * Hide the add category form
+ */
+function hideAddForm() {
+  elements.categoryForm.hidden = true
+  elements.toggleFormBtn.hidden = false
+  elements.categoryForm.reset()
 }
 
 // ============================================================================
@@ -189,8 +223,8 @@ async function addCategory(event) {
 
   await sendMessage('saveCategory', { category })
 
-  // Clear form
-  elements.categoryForm.reset()
+  // Hide form and clear it
+  hideAddForm()
 
   // Reload categories
   await loadSettings()
@@ -518,6 +552,18 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 elements.categoryForm.addEventListener('submit', addCategory)
+
+// Toggle form visibility
+elements.toggleFormBtn.addEventListener('click', showAddForm)
+elements.cancelFormBtn.addEventListener('click', hideAddForm)
+
+// Info button - show tooltip on click (for mobile) or hover
+elements.infoBtn.addEventListener('click', () => {
+  const msg =
+    browser.i18n.getMessage('downloadPathInfo') ||
+    "All folder paths are relative to your browser's default download location."
+  alert(msg)
+})
 
 // Filter categories
 elements.categoryFilter.addEventListener('input', (e) => {

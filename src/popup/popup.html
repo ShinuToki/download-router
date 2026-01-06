@@ -47,57 +47,11 @@
 
     <!-- Fixed Footer -->
     <footer>
-      <!-- Collapsible Add Category Form -->
-      <div class="add-category-wrapper">
-        <button id="toggle-form-btn" class="btn-add-category">
-          <span class="btn-icon-plus">+</span>
-          <span data-i18n="addCategory">Add Category</span>
-        </button>
-
-        <form id="category-form" class="add-category-form" hidden>
-          <div class="form-group">
-            <label for="category-name" data-i18n="categoryName"
-              >Category Name</label
-            >
-            <input type="text" id="category-name" required />
-          </div>
-          <div class="form-group">
-            <label for="category-folder" data-i18n="folderPath"
-              >Folder Path</label
-            >
-            <input
-              type="text"
-              id="category-folder"
-              placeholder="Videos"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="category-extensions" data-i18n="extensionsOptional"
-              >Extensions (optional)</label
-            >
-            <input
-              type="text"
-              id="category-extensions"
-              data-i18n-placeholder="extensionsPlaceholder"
-              placeholder="e.g. .pdf, .jpg, .doc"
-            />
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn-primary" data-i18n="save">
-              Save
-            </button>
-            <button
-              type="button"
-              id="cancel-form-btn"
-              class="btn-ghost"
-              data-i18n="cancel"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
+      <!-- Add Category Button -->
+      <button id="toggle-form-btn" class="btn-add-category">
+        <span class="btn-icon-plus">+</span>
+        <span data-i18n="addCategory">Add Category</span>
+      </button>
 
       <!-- Import/Export Section -->
       <section class="import-export-section">
@@ -121,6 +75,78 @@
         </button>
       </section>
     </footer>
+
+    <!-- Modal Overlay for Add Category -->
+    <div id="modal-overlay" class="modal-overlay" hidden>
+      <div class="modal-content">
+        <h2 class="modal-title" data-i18n="addCategory">Add Category</h2>
+        <form id="category-form">
+          <div class="form-group">
+            <label for="category-name" data-i18n="categoryName"
+              >Category Name</label
+            >
+            <input type="text" id="category-name" required />
+          </div>
+          <div class="form-group">
+            <label for="category-folder" data-i18n="folderPath"
+              >Folder Path</label
+            >
+            <input
+              type="text"
+              id="category-folder"
+              placeholder="Videos"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="category-extensions" data-i18n="extensions"
+              >Extensions (optional)</label
+            >
+            <input
+              type="text"
+              id="category-extensions"
+              data-i18n-placeholder="extensionsPlaceholder"
+              placeholder="e.g. .mp4, .mkv, .avi"
+            />
+          </div>
+          <div class="modal-actions">
+            <button
+              type="button"
+              id="cancel-form-btn"
+              class="btn-ghost"
+              data-i18n="cancel"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn-primary" data-i18n="save">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Generic Dialog Modal (for confirm/alert/prompt) -->
+    <div id="dialog-overlay" class="modal-overlay" hidden>
+      <div class="modal-content modal-dialog">
+        <h2 id="dialog-title" class="modal-title">Title</h2>
+        <p id="dialog-message" class="modal-message">Message</p>
+        <input type="text" id="dialog-input" class="dialog-input" hidden />
+        <div class="modal-actions">
+          <button
+            type="button"
+            id="dialog-cancel-btn"
+            class="btn-ghost"
+            data-i18n="cancel"
+          >
+            Cancel
+          </button>
+          <button type="button" id="dialog-confirm-btn" class="btn-primary">
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Toast Container -->
     <div id="toast-container"></div>

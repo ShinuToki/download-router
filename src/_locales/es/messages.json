@@ -24,11 +24,11 @@
     "description": "Etiqueta para la ruta de carpeta"
   },
   "extensions": {
-    "message": "Extensiones",
+    "message": "Extensiones (opcional)",
     "description": "Etiqueta para las extensiones"
   },
   "extensionsPlaceholder": {
-    "message": "ej: .pdf, .jpg, .doc",
+    "message": "ej: .mp4, .mkv, .avi",
     "description": "Placeholder para las extensiones"
   },
   "edit": {
@@ -55,6 +55,22 @@
     "message": "Cancelar",
     "description": "Texto del botón cancelar"
   },
+  "copy": {
+    "message": "Copiar",
+    "description": "Texto del botón copiar"
+  },
+  "copiedToClipboard": {
+    "message": "Copiado al portapapeles",
+    "description": "Mensaje toast cuando se copia texto"
+  },
+  "import": {
+    "message": "Importar",
+    "description": "Texto del botón importar en diálogo"
+  },
+  "continue": {
+    "message": "Continuar",
+    "description": "Texto del botón continuar"
+  },
 
   "categoryExists": {
     "message": "Ya existe una categoría con este nombre",
@@ -68,6 +84,18 @@
     "message": "¿Seguro que quieres eliminar esta categoría?",
     "description": "Mensaje de confirmación para eliminar"
   },
+  "deleteCategory": {
+    "message": "Eliminar categoría",
+    "description": "Título del diálogo de confirmación de borrado"
+  },
+  "information": {
+    "message": "Información",
+    "description": "Título del diálogo de información"
+  },
+  "understood": {
+    "message": "Entendido",
+    "description": "Texto del botón de confirmación del diálogo de información"
+  },
   "downloadPathInfo": {
     "message": "Todas las rutas de carpetas son relativas a la carpeta de descargas por defecto del navegador.",
     "description": "Texto informativo explicando las rutas de descarga"
@@ -79,10 +107,6 @@
   "extensionsHint": {
     "message": "Separadas por comas, opcional",
     "description": "Texto de ayuda para el campo de extensiones"
-  },
-  "extensionsOptional": {
-    "message": "Extensiones (opcional)",
-    "description": "Etiqueta para extensiones con indicador opcional"
   },
   "noCategories": {
     "message": "Aún no hay categorías. ¡Añade una abajo!",

@@ -24,11 +24,11 @@
     "description": "Label for folder path input"
   },
   "extensions": {
-    "message": "Extensions",
+    "message": "Extensions (optional)",
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
-    "message": "e.g. .pdf, .jpg, .doc",
+    "message": "e.g. .mp4, .mkv, .avi",
     "description": "Placeholder for extensions input"
   },
   "edit": {
@@ -55,6 +55,22 @@
     "message": "Cancel",
     "description": "Cancel button text"
   },
+  "copy": {
+    "message": "Copy",
+    "description": "Copy button text"
+  },
+  "copiedToClipboard": {
+    "message": "Copied to clipboard",
+    "description": "Toast message when text is copied"
+  },
+  "import": {
+    "message": "Import",
+    "description": "Import button text in dialog"
+  },
+  "continue": {
+    "message": "Continue",
+    "description": "Continue button text"
+  },
 
   "categoryExists": {
     "message": "A category with this name already exists",
@@ -68,6 +84,18 @@
     "message": "Are you sure you want to delete this category?",
     "description": "Confirmation message for category deletion"
   },
+  "deleteCategory": {
+    "message": "Delete category",
+    "description": "Title for delete confirmation dialog"
+  },
+  "information": {
+    "message": "Information",
+    "description": "Title for info dialog"
+  },
+  "understood": {
+    "message": "OK",
+    "description": "Button text for info dialog confirmation"
+  },
   "downloadPathInfo": {
     "message": "All folder paths are relative to your browser's default download location.",
     "description": "Info text explaining download paths"
@@ -79,10 +107,6 @@
   "extensionsHint": {
     "message": "Comma-separated, optional",
     "description": "Hint text for extensions input"
-  },
-  "extensionsOptional": {
-    "message": "Extensions (optional)",
-    "description": "Label for extensions input with optional indicator"
   },
   "noCategories": {
     "message": "No categories yet. Add one below!",

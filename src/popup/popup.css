@@ -239,12 +239,8 @@ button {
 }
 
 /* ============================================================================
-   Add Category Button & Collapsible Form
+   Add Category Button
    ============================================================================ */
-
-.add-category-wrapper {
-  margin-bottom: 12px;
-}
 
 .btn-add-category {
   display: flex;
@@ -253,6 +249,7 @@ button {
   gap: 6px;
   width: 100%;
   padding: 10px 16px;
+  margin-bottom: 12px;
   background-color: var(--bg-secondary);
   color: var(--primary-color);
   border: 1px dashed var(--primary-color);
@@ -267,10 +264,6 @@ button {
   border-style: solid;
 }
 
-.btn-add-category[hidden] {
-  display: none;
-}
-
 .btn-icon-plus {
   font-size: 16px;
   font-weight: 600;
@@ -279,30 +272,63 @@ button {
   top: -1px;
 }
 
-.btn-icon-sm .info-icon {
+/* ============================================================================
+   Modal Overlay
+   ============================================================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: modalFadeIn 0.15s ease;
 }
 
-/* Collapsible Form */
-.add-category-form {
-  padding: 12px;
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-left: 3px solid var(--primary-color);
-  border-radius: var(--radius);
-  animation: slideDown 0.2s ease;
-}
-
-.add-category-form[hidden] {
+.modal-overlay[hidden] {
   display: none;
 }
 
-.form-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 12px;
+.modal-overlay.closing {
+  animation: modalFadeOut 0.15s ease forwards;
 }
 
-.form-actions button {
+.modal-content {
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  animation: modalSlideIn 0.15s ease;
+}
+
+.modal-overlay.closing .modal-content {
+  animation: modalSlideOut 0.15s ease forwards;
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-color);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.modal-actions button {
   flex: 1;
 }
 
@@ -320,14 +346,100 @@ button {
   border-color: var(--text-secondary);
 }
 
-@keyframes slideDown {
+/* Modal Dialog Styles */
+.modal-message {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Danger Button (solid red for destructive actions) */
+.btn-danger-solid {
+  padding: 8px 16px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+}
+
+.btn-danger-solid:hover {
+  background-color: var(--danger-hover);
+}
+
+/* Info dialog (single button) */
+.modal-dialog.info .modal-actions {
+  justify-content: flex-end;
+}
+
+.modal-dialog.info #dialog-cancel-btn {
+  display: none;
+}
+
+/* Dialog Input (for prompt-style dialogs) */
+.dialog-input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  font-size: 12px;
+  font-family: monospace;
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+}
+
+.dialog-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.dialog-input[hidden] {
+  display: none;
+}
+
+.dialog-input[readonly] {
+  cursor: text;
+  user-select: all;
+}
+
+@keyframes modalFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalSlideOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
   }
 }
 

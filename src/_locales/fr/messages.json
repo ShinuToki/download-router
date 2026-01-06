@@ -24,11 +24,11 @@
     "description": "Label for folder path input"
   },
   "extensions": {
-    "message": "Extensions",
+    "message": "Extensions (facultatif)",
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
-    "message": "ex: .pdf, .jpg, .doc",
+    "message": "ex: .mp4, .mkv, .avi",
     "description": "Placeholder for extensions input"
   },
   "edit": {
@@ -55,6 +55,22 @@
     "message": "Annuler",
     "description": "Cancel button text"
   },
+  "copy": {
+    "message": "Copier",
+    "description": "Copy button text"
+  },
+  "copiedToClipboard": {
+    "message": "Copié dans le presse-papiers",
+    "description": "Toast message when text is copied"
+  },
+  "import": {
+    "message": "Importer",
+    "description": "Import button text in dialog"
+  },
+  "continue": {
+    "message": "Continuer",
+    "description": "Continue button text"
+  },
 
   "categoryExists": {
     "message": "Une catégorie portant ce nom existe déjà",
@@ -68,6 +84,18 @@
     "message": "Voulez-vous vraiment supprimer cette catégorie ?",
     "description": "Confirmation message for category deletion"
   },
+  "deleteCategory": {
+    "message": "Supprimer la catégorie",
+    "description": "Title for delete confirmation dialog"
+  },
+  "information": {
+    "message": "Information",
+    "description": "Title for info dialog"
+  },
+  "understood": {
+    "message": "Compris",
+    "description": "Button text for info dialog confirmation"
+  },
   "downloadPathInfo": {
     "message": "Tous les chemins de dossier sont relatifs à l'emplacement de téléchargement par défaut de votre navigateur.",
     "description": "Info text explaining download paths"
@@ -79,10 +107,6 @@
   "extensionsHint": {
     "message": "Séparées par des virgules, facultatif",
     "description": "Hint text for extensions input"
-  },
-  "extensionsOptional": {
-    "message": "Extensions (facultatif)",
-    "description": "Label for extensions input with optional indicator"
   },
   "noCategories": {
     "message": "Aucune catégorie pour l'instant. Ajoutez-en une ci-dessous !",

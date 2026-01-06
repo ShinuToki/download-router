@@ -57,28 +57,195 @@ const elements = {
   toggleFormBtn: document.getElementById('toggle-form-btn'),
   cancelFormBtn: document.getElementById('cancel-form-btn'),
   infoBtn: document.getElementById('info-btn'),
+  modalOverlay: document.getElementById('modal-overlay'),
+  // Dialog modal elements
+  dialogOverlay: document.getElementById('dialog-overlay'),
+  dialogTitle: document.getElementById('dialog-title'),
+  dialogMessage: document.getElementById('dialog-message'),
+  dialogInput: document.getElementById('dialog-input'),
+  dialogConfirmBtn: document.getElementById('dialog-confirm-btn'),
+  dialogCancelBtn: document.getElementById('dialog-cancel-btn'),
 }
 
 // ============================================================================
-// Form Toggle
+// Form Toggle (Modal)
 // ============================================================================
 
 /**
- * Show the add category form
+ * Show the add category modal
  */
 function showAddForm() {
-  elements.categoryForm.hidden = false
-  elements.toggleFormBtn.hidden = true
+  elements.modalOverlay.hidden = false
   elements.categoryName.focus()
 }
 
 /**
- * Hide the add category form
+ * Hide the add category modal with animation
  */
 function hideAddForm() {
-  elements.categoryForm.hidden = true
-  elements.toggleFormBtn.hidden = false
-  elements.categoryForm.reset()
+  elements.modalOverlay.classList.add('closing')
+  setTimeout(() => {
+    elements.modalOverlay.hidden = true
+    elements.modalOverlay.classList.remove('closing')
+    elements.categoryForm.reset()
+  }, 150) // Match the animation duration
+}
+
+/**
+ * Handle click on overlay background to close modal
+ */
+function handleOverlayClick(event) {
+  // Only close if clicking on the overlay itself, not the modal content
+  if (event.target === elements.modalOverlay) {
+    hideAddForm()
+  }
+}
+
+/**
+ * Handle ESC key to close modals
+ */
+function handleEscKey(event) {
+  if (event.key === 'Escape') {
+    if (!elements.modalOverlay.hidden) {
+      hideAddForm()
+    }
+    if (!elements.dialogOverlay.hidden) {
+      closeDialog(false)
+    }
+  }
+}
+
+// ============================================================================
+// Custom Dialog Modals
+// ============================================================================
+
+let dialogResolve = null
+
+/**
+ * Show a confirmation dialog (replaces confirm())
+ * @param {string} title - Dialog title
+ * @param {string} message - Dialog message
+ * @param {string} confirmText - Text for confirm button
+ * @param {boolean} isDanger - If true, use red button for destructive action
+ * @returns {Promise<boolean>} - Resolves to true if confirmed, false if cancelled
+ */
+function showConfirmDialog(title, message, confirmText, isDanger = false) {
+  return new Promise((resolve) => {
+    dialogResolve = resolve
+
+    elements.dialogTitle.textContent = title
+    elements.dialogMessage.textContent = message
+    elements.dialogConfirmBtn.textContent = confirmText
+    elements.dialogCancelBtn.style.display = ''
+
+    // Set button style based on action type
+    const dialogContent = elements.dialogOverlay.querySelector('.modal-dialog')
+    dialogContent.classList.remove('info')
+
+    if (isDanger) {
+      elements.dialogConfirmBtn.className = 'btn-danger-solid'
+    } else {
+      elements.dialogConfirmBtn.className = 'btn-primary'
+    }
+
+    elements.dialogOverlay.hidden = false
+  })
+}
+
+/**
+ * Show an info dialog (replaces alert())
+ * @param {string} title - Dialog title
+ * @param {string} message - Dialog message
+ * @param {string} buttonText - Text for the OK button
+ * @returns {Promise<void>} - Resolves when closed
+ */
+function showInfoDialog(title, message, buttonText = 'OK') {
+  return new Promise((resolve) => {
+    dialogResolve = () => resolve()
+
+    elements.dialogTitle.textContent = title
+    elements.dialogMessage.textContent = message
+    elements.dialogConfirmBtn.textContent = buttonText
+    elements.dialogConfirmBtn.className = 'btn-primary'
+
+    // Hide cancel button and add info class
+    const dialogContent = elements.dialogOverlay.querySelector('.modal-dialog')
+    dialogContent.classList.add('info')
+
+    elements.dialogOverlay.hidden = false
+  })
+}
+
+/**
+ * Show a prompt dialog with input field (replaces prompt())
+ * @param {string} title - Dialog title
+ * @param {string} message - Dialog message
+ * @param {string} confirmText - Text for confirm button
+ * @param {string} defaultValue - Default value for input
+ * @param {boolean} readonly - If true, the input is readonly (for export)
+ * @returns {Promise<string|null>} - Resolves to input value if confirmed, null if cancelled
+ */
+function showPromptDialog(
+  title,
+  message,
+  confirmText,
+  defaultValue = '',
+  readonly = false
+) {
+  return new Promise((resolve) => {
+    // dialogResolve will receive the input value or null from closeDialog
+    dialogResolve = resolve
+
+    elements.dialogTitle.textContent = title
+    elements.dialogMessage.textContent = message
+    elements.dialogConfirmBtn.textContent = confirmText
+    elements.dialogConfirmBtn.className = 'btn-primary'
+    elements.dialogCancelBtn.style.display = ''
+
+    // Setup input
+    elements.dialogInput.hidden = false
+    elements.dialogInput.value = defaultValue
+    elements.dialogInput.readOnly = readonly
+
+    const dialogContent = elements.dialogOverlay.querySelector('.modal-dialog')
+    dialogContent.classList.remove('info')
+
+    elements.dialogOverlay.hidden = false
+
+    // Focus and select input
+    setTimeout(() => {
+      elements.dialogInput.focus()
+      if (readonly) {
+        elements.dialogInput.select()
+      }
+    }, 50)
+  })
+}
+
+/**
+ * Close the dialog modal with animation
+ * @param {boolean} result - The result to resolve the promise with
+ */
+function closeDialog(result) {
+  // Save input value BEFORE clearing it
+  const inputValue = elements.dialogInput.value
+
+  elements.dialogOverlay.classList.add('closing')
+  setTimeout(() => {
+    elements.dialogOverlay.hidden = true
+    elements.dialogOverlay.classList.remove('closing')
+
+    // Call dialogResolve BEFORE resetting input state
+    if (dialogResolve) {
+      dialogResolve(result ? inputValue : null)
+      dialogResolve = null
+    }
+
+    // Reset input state AFTER resolving
+    elements.dialogInput.hidden = true
+    elements.dialogInput.value = ''
+    elements.dialogInput.readOnly = false
+  }, 150)
 }
 
 // ============================================================================
@@ -251,10 +418,14 @@ async function updateCategory(categoryId, updates) {
  * Delete category
  */
 async function deleteCategory(categoryId) {
-  const confirmMsg =
+  const title = browser.i18n.getMessage('deleteCategory') || 'Delete category'
+  const message =
     browser.i18n.getMessage('confirmDelete') ||
     'Are you sure you want to delete this category?'
-  if (!confirm(confirmMsg)) return
+  const deleteText = browser.i18n.getMessage('delete') || 'Delete'
+
+  const confirmed = await showConfirmDialog(title, message, deleteText, true)
+  if (!confirmed) return
 
   await sendMessage('deleteCategory', { categoryId })
   await loadSettings()
@@ -553,16 +724,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 elements.categoryForm.addEventListener('submit', addCategory)
 
-// Toggle form visibility
+// Toggle form visibility (modal)
 elements.toggleFormBtn.addEventListener('click', showAddForm)
 elements.cancelFormBtn.addEventListener('click', hideAddForm)
+elements.modalOverlay.addEventListener('click', handleOverlayClick)
+document.addEventListener('keydown', handleEscKey)
 
-// Info button - show tooltip on click (for mobile) or hover
+// Dialog modal buttons
+elements.dialogConfirmBtn.addEventListener('click', () => closeDialog(true))
+elements.dialogCancelBtn.addEventListener('click', () => closeDialog(false))
+elements.dialogOverlay.addEventListener('click', (e) => {
+  if (e.target === elements.dialogOverlay) {
+    closeDialog(false)
+  }
+})
+
+// Info button - show info dialog
 elements.infoBtn.addEventListener('click', () => {
+  const title = browser.i18n.getMessage('information') || 'Information'
   const msg =
     browser.i18n.getMessage('downloadPathInfo') ||
     "All folder paths are relative to your browser's default download location."
-  alert(msg)
+  const okText = browser.i18n.getMessage('understood') || 'OK'
+  showInfoDialog(title, msg, okText)
 })
 
 // Filter categories
@@ -577,24 +761,40 @@ elements.exportBtn.addEventListener('click', async () => {
   const jsonStr = JSON.stringify(settings)
   const base64 = btoa(unescape(encodeURIComponent(jsonStr)))
 
-  // Show the encoded string in a prompt for easy copying
-  const exportMsg =
+  const title = browser.i18n.getMessage('exportConfig') || 'Export'
+  const message =
     browser.i18n.getMessage('exportString') || 'Copy this configuration string:'
-  prompt(exportMsg, base64)
+  const copyText = browser.i18n.getMessage('copy') || 'Copy'
 
-  showToast(
-    browser.i18n.getMessage('exportSuccess') ||
-      'Configuration string generated',
-    'success'
-  )
+  const result = await showPromptDialog(title, message, copyText, base64, true)
+
+  if (result !== null) {
+    // Copy to clipboard
+    try {
+      await navigator.clipboard.writeText(result)
+      showToast(
+        browser.i18n.getMessage('copiedToClipboard') || 'Copied to clipboard',
+        'success'
+      )
+    } catch {
+      showToast(
+        browser.i18n.getMessage('exportSuccess') ||
+          'Configuration string generated',
+        'success'
+      )
+    }
+  }
 })
 
 // Import configuration - decode Base64 string
 elements.importBtn.addEventListener('click', async () => {
-  const base64 = prompt(
+  const title = browser.i18n.getMessage('importConfig') || 'Import'
+  const message =
     browser.i18n.getMessage('importPrompt') ||
-      'Paste the configuration string here:'
-  )
+    'Paste the configuration string here:'
+  const importText = browser.i18n.getMessage('import') || 'Import'
+
+  const base64 = await showPromptDialog(title, message, importText, '', false)
 
   if (!base64 || !base64.trim()) {
     return
@@ -611,10 +811,20 @@ elements.importBtn.addEventListener('click', async () => {
     }
 
     // Confirm before overwriting
+    const confirmTitle =
+      browser.i18n.getMessage('importConfig') || 'Import Configuration'
     const confirmMsg =
       browser.i18n.getMessage('importConfirm') ||
       'This will overwrite your current configuration. Continue?'
-    if (!confirm(confirmMsg)) {
+    const continueText = browser.i18n.getMessage('continue') || 'Continue'
+
+    const confirmed = await showConfirmDialog(
+      confirmTitle,
+      confirmMsg,
+      continueText,
+      false
+    )
+    if (!confirmed) {
       return
     }
 

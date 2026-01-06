@@ -24,11 +24,11 @@
     "description": "Label for folder path input"
   },
   "extensions": {
-    "message": "Extensions",
+    "message": "Extensions (opcional)",
     "description": "Label for extensions input"
   },
   "extensionsPlaceholder": {
-    "message": "ex: .pdf, .jpg, .doc",
+    "message": "ex: .mp4, .mkv, .avi",
     "description": "Placeholder for extensions input"
   },
   "edit": {
@@ -55,6 +55,22 @@
     "message": "Cancel·la",
     "description": "Cancel button text"
   },
+  "copy": {
+    "message": "Copia",
+    "description": "Copy button text"
+  },
+  "copiedToClipboard": {
+    "message": "Copiat al porta-retalls",
+    "description": "Toast message when text is copied"
+  },
+  "import": {
+    "message": "Importa",
+    "description": "Import button text in dialog"
+  },
+  "continue": {
+    "message": "Continua",
+    "description": "Continue button text"
+  },
   "categoryExists": {
     "message": "Ja existeix una categoria amb aquest nom",
     "description": "Error when duplicate category name"
@@ -67,6 +83,18 @@
     "message": "Segur que voleu suprimir aquesta categoria?",
     "description": "Confirmation message for category deletion"
   },
+  "deleteCategory": {
+    "message": "Suprimeix categoria",
+    "description": "Title for delete confirmation dialog"
+  },
+  "information": {
+    "message": "Informació",
+    "description": "Title for info dialog"
+  },
+  "understood": {
+    "message": "Entesos",
+    "description": "Button text for info dialog confirmation"
+  },
   "downloadPathInfo": {
     "message": "Totes les rutes de carpeta són relatives a la ubicació de baixada per defecte del navegador.",
     "description": "Info text explaining download paths"
@@ -78,10 +106,6 @@
   "extensionsHint": {
     "message": "Separades per comes, opcional",
     "description": "Hint text for extensions input"
-  },
-  "extensionsOptional": {
-    "message": "Extensions (opcional)",
-    "description": "Label for extensions input with optional indicator"
   },
   "noCategories": {
     "message": "Encara no hi ha categories. Afegiu-ne una a baix!",

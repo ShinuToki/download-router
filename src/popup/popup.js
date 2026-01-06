@@ -227,8 +227,9 @@ function showPromptDialog(
  * @param {boolean} result - The result to resolve the promise with
  */
 function closeDialog(result) {
-  // Save input value BEFORE clearing it
+  // Save input value and visibility BEFORE clearing
   const inputValue = elements.dialogInput.value
+  const inputWasVisible = !elements.dialogInput.hidden
 
   elements.dialogOverlay.classList.add('closing')
   setTimeout(() => {
@@ -237,7 +238,13 @@ function closeDialog(result) {
 
     // Call dialogResolve BEFORE resetting input state
     if (dialogResolve) {
-      dialogResolve(result ? inputValue : null)
+      // If input was visible (prompt), return the value or null
+      // If input was hidden (confirm/info), return the boolean
+      if (inputWasVisible) {
+        dialogResolve(result ? inputValue : null)
+      } else {
+        dialogResolve(result)
+      }
       dialogResolve = null
     }
 

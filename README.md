@@ -7,8 +7,11 @@ A Firefox extension that automatically routes your downloads to categorized fold
 
 ## Screenshots
 
-<!-- Add your screenshots here -->
-<!-- ![Popup Interface](screenshots/popup.png) -->
+|                      Dark Mode                      |                      Light Mode                       |
+| :-------------------------------------------------: | :---------------------------------------------------: |
+|     ![Dark Mode - Main](screenshots/dark01.png)     |     ![Light Mode - Main](screenshots/light01.png)     |
+| ![Dark Mode - Add Category](screenshots/dark02.png) | ![Light Mode - Add Category](screenshots/light02.png) |
+|    ![Dark Mode - Delete](screenshots/dark03.png)    |    ![Light Mode - Delete](screenshots/light03.png)    |
 
 ## Features
 

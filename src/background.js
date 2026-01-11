@@ -9,7 +9,6 @@
 
 const DEFAULT_SETTINGS = {
   categories: [],
-  defaultFolder: 'Downloads',
 }
 
 // Pending downloads waiting for category selection
@@ -21,16 +20,15 @@ const pendingDownloads = new Map()
 
 /**
  * Load settings from storage
- * @returns {Promise<Object>} Settings object with categories and defaultFolder
+ * @returns {Promise<Object>} Settings object with categories
  */
 async function loadSettings() {
   try {
-    const data = await browser.storage.sync.get(['categories', 'defaultFolder'])
+    const data = await browser.storage.sync.get(['categories'])
     return {
       categories: Array.isArray(data.categories)
         ? data.categories
         : DEFAULT_SETTINGS.categories,
-      defaultFolder: data.defaultFolder || DEFAULT_SETTINGS.defaultFolder,
     }
   } catch (error) {
     console.error('Error loading settings:', error)
@@ -156,20 +154,25 @@ function findCategoryByExtension(extension, categories) {
 /**
  * Download a file to a specific category folder
  * @param {string} url - URL to download
- * @param {string} folder - Target folder path
+ * @param {string} folder - Target folder path (if empty, uses browser's default)
  * @param {string} filename - Optional custom filename
  */
 async function downloadToFolder(url, folder, filename = null) {
   const cleanFilename = filename || getCleanFilename(url)
-  const relativePath = folder ? `${folder}/${cleanFilename}` : cleanFilename
+
+  const options = {
+    url: url,
+    conflictAction: 'uniquify',
+    saveAs: false,
+  }
+
+  // Only specify filename path if folder is provided
+  if (folder) {
+    options.filename = `${folder}/${cleanFilename}`
+  }
 
   try {
-    const downloadId = await browser.downloads.download({
-      url: url,
-      filename: relativePath,
-      conflictAction: 'uniquify',
-      saveAs: false,
-    })
+    const downloadId = await browser.downloads.download(options)
     return downloadId
   } catch (error) {
     throw error
@@ -199,10 +202,7 @@ async function createContextMenus() {
   browser.contextMenus.create({
     id: 'download-router-default',
     parentId: 'download-router-parent',
-    title: browser.i18n.getMessage(
-      'contextMenuDefault',
-      settings.defaultFolder
-    ),
+    title: browser.i18n.getMessage('contextMenuDefault'),
     contexts: ['link', 'image', 'video', 'audio'],
   })
 
@@ -243,7 +243,7 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
   const settings = await loadSettings()
 
   if (info.menuItemId === 'download-router-default') {
-    await downloadToFolder(url, settings.defaultFolder)
+    await downloadToFolder(url, '')
   } else {
     const categoryId = info.menuItemId.replace('download-router-', '')
     const category = settings.categories.find((c) => c.id === categoryId)
@@ -290,12 +290,6 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
       return { success: true }
     }
 
-    case 'setDefaultFolder': {
-      await saveSettings({ defaultFolder: message.folder })
-      await createContextMenus()
-      return { success: true }
-    }
-
     case 'getPendingDownload': {
       const pending = pendingDownloads.get(message.downloadId)
       return pending || null
@@ -308,7 +302,7 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
       }
 
       const settings = await loadSettings()
-      let folder = settings.defaultFolder
+      let folder = ''
 
       if (message.categoryId) {
         const category = settings.categories.find(
@@ -335,12 +329,9 @@ browser.runtime.onMessage.addListener(async (message, sender) => {
 
     case 'importSettings': {
       const newSettings = message.settings
-      // Merge with existing settings, replacing categories
+      // Import categories only (defaultFolder is no longer supported)
       const currentSettings = await loadSettings()
       currentSettings.categories = newSettings.categories || []
-      if (newSettings.defaultFolder) {
-        currentSettings.defaultFolder = newSettings.defaultFolder
-      }
       await saveSettings(currentSettings)
       await createContextMenus()
       return { success: true }
@@ -402,7 +393,7 @@ createContextMenus()
 
 // Listen for storage changes to update menus
 browser.storage.onChanged.addListener((changes, areaName) => {
-  if (areaName === 'sync' && (changes.categories || changes.defaultFolder)) {
+  if (areaName === 'sync' && changes.categories) {
     createContextMenus()
   }
 })

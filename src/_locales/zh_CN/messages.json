@@ -169,13 +169,7 @@
     "description": "Title of the context menu parent item"
   },
   "contextMenuDefault": {
-    "message": "默认 ($FOLDER$)",
-    "description": "Context menu item for default folder",
-    "placeholders": {
-      "folder": {
-        "content": "$1",
-        "example": "Downloads"
-      }
-    }
+    "message": "默认",
+    "description": "Context menu item for default folder"
   }
 }

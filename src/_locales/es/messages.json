@@ -169,13 +169,7 @@
     "description": "Título del menú contextual principal"
   },
   "contextMenuDefault": {
-    "message": "Por defecto ($FOLDER$)",
-    "description": "Opción del menú contextual para carpeta por defecto",
-    "placeholders": {
-      "folder": {
-        "content": "$1",
-        "example": "Downloads"
-      }
-    }
+    "message": "Por defecto",
+    "description": "Opción del menú contextual para carpeta por defecto"
   }
 }
